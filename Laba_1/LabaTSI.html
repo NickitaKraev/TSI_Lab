@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html id = "html">
+<head id ="head">
+    <meta charset="UTF-8">
+    <title>Laba number #1</title>
+</head> 
+
+<body id="body">
+<h1 id="h1">Лабараторная №1</h1>   
+<h2 id="h2">Выполнил: Краев Никита</h2>
+<h3 id="h2">Вариант №22</h3>
+
+<div id = "div"><span>Задание </span><span><a>:</a> </span><hr></div> 
+<div id="div2">
+  Напишите функцию на JavaScript, принимающую в качестве аргумента элемент html и выводящую на страницу «дерево» DOM, для которого переданный в качестве аргумента элемент является корневым.<br>
+  Дерево должно выводиться в виде ненумерованного списка ("ul") с вложениями.<br>
+  В качестве текста, выводимого в элементе списка использовать имя элемента (т.е. head, body, p, div и др) и id элемента в том случае, если он указан.<br>
+  Вызов функции на странице осуществлять при нажатии кнопки, элемент, начиная с которого выводить дерево, указывать через его id, которое вводить в текстовом поле<a>.</a><hr>
+</div>
+<form id="form" name="reg">
+ Введите id элемента:<input type="text" name="id_el" value=""> 
+ <input id="input" type="button" value="Получить дерево" onclick="help_function()">
+ <input type="submit" value="Ввести id ещё раз" >
+</form>
+<script id="script" src="GenerateDOMtree.js"></script>
+</body>
+</html>
