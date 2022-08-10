@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Передача показаний счётчиков</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Передача показаний счётчиков</h1>
+     <form method="post">
+        <fieldset style="width:700px">
+                <legend><%=data.name %></legend>
+
+                <% for (let [arg_1, arg_2] of Object.entries(data)) { %>
+
+                    <% if (arg_1 == 'name') continue; %>
+
+                    <% if(arg_1 == "resources") break; %>
+
+                    <%=arg_1 %>: <input required type="<%=arg_2 %>" name="<%= arg_1 %>" minlength="1" >
+
+                <% } %>
+
+                <% for(let element of data.resources) { %>
+
+                    <fieldset style="width:700px">
+
+                        <legend><%=element.name %></legend>
+                        
+                        <% for (let [arg_1, arg_2] of Object.entries(element)) { %>
+
+                            <% if (arg_1 == "name") continue %>
+                            <%=arg_1 %>: <input required type="<%=arg_2 %>" name="<%= arg_1 + '(' + element.name + ')' %>" min = "0" minlength="1">
+
+                        <% } %>
+
+                    </fieldset>
+
+                <% } %>
+            </fieldset>
+        <input type="submit" value="Отправить" />
+     </form>
+     <a href="/">Вернуться на главную</a>
+</body>
+<html>

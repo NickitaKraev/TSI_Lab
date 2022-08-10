@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Показания счетчиков</title>
+    <link href="/css/table1.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Список показаний счетчиков</h1>
+    <p><a href="/add">Передать показания</a></p>
+    <table>
+        <tr>
+            <th>Дата</th>
+
+            <% for (let [arg_1, arg_2] of Object.entries(structure)) { %>
+
+                <% if (arg_1 == "name") continue; %>
+
+                <% if(arg_1 == "resources") break; %>
+
+                <th><%=arg_1 %></th>
+            <% } %>
+
+            <% for(let element of structure.resources) { %>
+
+                <% for (let [arg_1, arg_2] of Object.entries(element)) { %>
+                    <% if (arg_1 == "name") continue; %>
+                    <th><%= arg_1 + '(' + element.name + ')' %></th>
+                <% } %>
+
+            <% } %>
+        </tr>
+
+            <% for(let element of Object.entries(arr)){ %>
+                <tr>
+                    <% let str = ""; %>
+                    <% for(let [arg1, arg2] of Object.entries(element[1]["date_"])){ %>
+                        <% str +=  arg2; %>
+                    <% } %>
+                    <td><%=str%></td> 
+
+                    <% for (let [arg_1, arg_2] of Object.entries(structure)) { %>
+
+                        <% if (arg_1 == "name") continue %>
+
+                        <% if(arg_1 == "resources") break %>
+
+                        <% for(let [name, value] of Object.entries(element[1]["indications"])){ %>
+                            <% if(name == arg_1){ %>
+                                <td><%= value %></td>
+                            <% } %>
+                        <% } %>   
+
+                    <% } %>
+
+                    <% for(let item of structure.resources) { %>
+
+                        <% for (let [arg_1, arg_2] of Object.entries(item)) { %>
+
+                            <% if (arg_1 == "name") continue; %>
+                            <% arg_1 = arg_1 + '(' + item.name + ')' %>
+
+                            <% for(let [name, value] of Object.entries(element[1]["indications"])){ %>
+                                <% if(name == arg_1){ %>
+                                    <td><%= value %></td>
+                                <% } %>
+                            <% } %>
+
+                        <% } %>
+
+                    <% } %>
+
+                </tr>
+            <% } %>      
+    </table>
+</body>
+<html>
